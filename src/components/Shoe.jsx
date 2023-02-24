@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-const Shoe = (props) => {
+import { Button } from "react-bootstrap";
+
+const Shoe = () => {
   const [shoe, setShoe] = useState({});
   const params = useParams();
   const [name, setName] = useState("");
@@ -30,13 +32,13 @@ const Shoe = (props) => {
     console.log(id);
 
     const item = await fetch(
-      `https://63f74cb5e40e087c958b9059.mockapi.io/shoes/${id}`,
+      `https://63f74cb5e40e087c958b9059.mockapi.io/shoes/${shoe.id}`,
       {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, id }),
+        body: JSON.stringify({ name, price }),
       }
     );
     if (item.ok) {
@@ -55,7 +57,7 @@ const Shoe = (props) => {
     console.log(id);
 
     const item = await fetch(
-      `https://63f74cb5e40e087c958b9059.mockapi.io/shoes/${id}`,
+      `https://63f74cb5e40e087c958b9059.mockapi.io/shoes/${shoe.id}`,
       {
         method: "DELETE",
       }
@@ -70,27 +72,27 @@ const Shoe = (props) => {
     console.log(res);
   };
 
-  const addHandler = async (e) => {
-    e.preventDefault();
+  //   const addHandler = async (e) => {
+  //     e.preventDefault();
 
-    const item = await fetch(
-      `https://63f74cb5e40e087c958b9059.mockapi.io/shoes`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ pic, name, price }),
-      }
-    );
-    if (item.ok) {
-      alert("Post Add successfully!");
-    } else {
-      alert("Failed to Add post.");
-    }
+  //     const item = await fetch(
+  //       `https://63f74cb5e40e087c958b9059.mockapi.io/shoes`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ pic, name, price }),
+  //       }
+  //     );
+  //     if (item.ok) {
+  //       alert("Post Add successfully!");
+  //     } else {
+  //       alert("Failed to Add post.");
+  //     }
 
-    const res = await item.json();
-  };
+  //     const res = await item.json();
+  //   };
 
   return (
     <div>
@@ -99,9 +101,15 @@ const Shoe = (props) => {
         <h1>{shoe.name}</h1>
         <img src={shoe.picture} alt="pic" width="100px" height="100px" />
       </div>
-      <button onClick={editHandler}>Edit</button>
-      <button onClick={deleteHandler}>Delete</button>
-      <button onClick={addHandler}>Add</button>
+      <Button variant="primary" onClick={editHandler}>
+        Edit
+      </Button>
+      <Button variant="primary" onClick={deleteHandler}>
+        Delete
+      </Button>
+      {/* <Button variant="primary" onClick={addHandler}>
+        Add
+      </Button> */}
 
       <input
         type="text"
