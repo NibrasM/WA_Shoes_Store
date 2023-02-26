@@ -1,0 +1,17 @@
+.shoes-div {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5vw;
+}
+
+.shoe-div-link {
+  text-decoration: none;
+  color: green;
+}
+.shoe-div {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  width: 20vw;
+}

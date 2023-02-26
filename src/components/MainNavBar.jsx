@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom";
-
-const MainNavBar = () => {
+import "./MainNavBar.css";
+function MainNavBar() {
   return (
     <header>
       <nav className="navbar">
-        <ul>
-          <li>
-            <Link to="/"> Home</Link>
-          </li>
-          <li>
-            <Link to="/shoes"> Shoes</Link>
-          </li>
-        </ul>
+        <img
+          className="logo-img"
+          src="https://img.freepik.com/premium-vector/shoes-store-logo-template-design_316488-430.jpg"
+          alt="logo"
+        />
+        <Link className="nav-link" to="/">
+          Home
+        </Link>
+        <Link className="nav-link" to="/shoes">
+          Shoes
+        </Link>
       </nav>
     </header>
   );
-};
+}
 export default MainNavBar;

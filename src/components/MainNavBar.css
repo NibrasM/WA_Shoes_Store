@@ -1,0 +1,19 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  padding: 0 20vw;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: rgb(5, 163, 53);
+  font-size: 25px;
+}
+
+.logo-img {
+  width: 10vw;
+  height: 10vw;
+}

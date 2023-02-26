@@ -1,16 +1,17 @@
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import "./Shoe.css";
 
-const Shoe = () => {
+function Shoe() {
   const [shoe, setShoe] = useState({});
   const params = useParams();
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
+  const [name, setName] = useState(params.name);
+  const [price, setPrice] = useState(params.price);
   const [id, setId] = useState("");
-  const [pic, setPic] = useState(
-    "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/470.jpg"
-  );
+  const [picture, setPicture] = useState(params.picture);
 
   useEffect(() => {
     const itemData = async () => {
@@ -38,11 +39,13 @@ const Shoe = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, price }),
+        body: JSON.stringify({ picture, name, price }),
       }
     );
     if (item.ok) {
-      alert("Post updated successfully!");
+      // alert("Post updated successfully!");
+      // let history = useHistory();
+      // history.push("/shoes");
     } else {
       alert("Failed to update post.");
     }
@@ -53,8 +56,6 @@ const Shoe = () => {
 
   const deleteHandler = async (e) => {
     e.preventDefault();
-    console.log(name);
-    console.log(id);
 
     const item = await fetch(
       `https://63f74cb5e40e087c958b9059.mockapi.io/shoes/${shoe.id}`,
@@ -63,7 +64,7 @@ const Shoe = () => {
       }
     );
     if (item.ok) {
-      alert("Post DELETED successfully!");
+      // alert("Post DELETED successfully!");
     } else {
       alert("Failed to DELETED post.");
     }
@@ -72,44 +73,19 @@ const Shoe = () => {
     console.log(res);
   };
 
-  //   const addHandler = async (e) => {
-  //     e.preventDefault();
-
-  //     const item = await fetch(
-  //       `https://63f74cb5e40e087c958b9059.mockapi.io/shoes`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({ pic, name, price }),
-  //       }
-  //     );
-  //     if (item.ok) {
-  //       alert("Post Add successfully!");
-  //     } else {
-  //       alert("Failed to Add post.");
-  //     }
-
-  //     const res = await item.json();
-  //   };
-
   return (
-    <div>
-      <div>
-        <h1>{params.id}</h1>
+    <div className="shoe-page">
+      <div className="shoe-div">
+        <img
+          className="shoe-img"
+          src={shoe.picture}
+          alt="pic"
+          width="100px"
+          height="100px"
+        />
         <h1>{shoe.name}</h1>
-        <img src={shoe.picture} alt="pic" width="100px" height="100px" />
+        <p>{shoe.price}$</p>
       </div>
-      <Button variant="primary" onClick={editHandler}>
-        Edit
-      </Button>
-      <Button variant="primary" onClick={deleteHandler}>
-        Delete
-      </Button>
-      {/* <Button variant="primary" onClick={addHandler}>
-        Add
-      </Button> */}
 
       <input
         type="text"
@@ -120,10 +96,10 @@ const Shoe = () => {
       ></input>
       <input
         type="text"
-        placeholder="Id..."
+        placeholder="Picture..."
         style={{ margin: "20px" }}
-        value={id}
-        onChange={(e) => setId(e.target.value)}
+        value={picture}
+        onChange={(e) => setPicture(e.target.value)}
       ></input>
       <input
         type="text"
@@ -132,7 +108,16 @@ const Shoe = () => {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       ></input>
+
+      <div className="btns-div">
+        <Button variant="warning" onClick={editHandler}>
+          Edit
+        </Button>
+        <Button variant="danger" onClick={deleteHandler}>
+          Delete
+        </Button>
+      </div>
     </div>
   );
-};
+}
 export default Shoe;
