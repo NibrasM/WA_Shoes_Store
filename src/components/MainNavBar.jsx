@@ -4,16 +4,23 @@ function MainNavBar() {
   return (
     <header>
       <nav className="navbar">
-        <img
-          className="logo-img"
-          src="https://img.freepik.com/premium-vector/shoes-store-logo-template-design_316488-430.jpg"
-          alt="logo"
-        />
+        <Link className="nav-link" to="/">
+          <img
+            className="logo-img"
+            src="https://cdn-icons-png.flaticon.com/512/4205/4205494.png"
+            alt="logo"
+          />
+        </Link>
         <Link className="nav-link" to="/">
           Home
         </Link>
+
         <Link className="nav-link" to="/shoes">
-          Shoes
+          Shop
+        </Link>
+
+        <Link className="nav-link" to="/offers">
+          Offers
         </Link>
       </nav>
     </header>

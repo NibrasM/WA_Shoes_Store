@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import ShoesStore from "./components/Shoes";
 import RootLayout from "./components/RootLayout";
 import Shoe from "./components/Shoe";
+import Offers from "./components/Offers";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -12,6 +13,10 @@ const Router = createBrowserRouter([
       {
         path: "/shoes",
         element: <ShoesStore />,
+      },
+      {
+        path: "/offers",
+        element: <Offers />,
       },
       {
         path: "/shoe/:id",

@@ -1,17 +1,34 @@
+* {
+  font-family: "Roboto Condensed";
+}
+
+.home-page {
+  top: 14.5vh;
+  padding-top: 14.5vh;
+}
+.home-page-img {
+}
 .shoes-div {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 5vw;
+  padding-top: 5vh;
 }
 
 .shoe-div-link {
   text-decoration: none;
-  color: green;
+  color: black !important;
+  text-align: center;
 }
-.shoe-div {
+.shoe-div-home {
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
   width: 20vw;
+  height: 40vh;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+}
+.shoe-img-home {
+  width: 20vw;
+  height: 20vh;
 }

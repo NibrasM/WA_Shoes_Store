@@ -37,11 +37,6 @@ function Shoes() {
     getItems();
   }, [added]);
 
-  console.log(shoes);
-
-  // const handleFileInputChange = (event) => {
-  //   setPic(event.target.files[0]);
-  // };
   const addHandler = async (e) => {
     setAdded(false);
     e.preventDefault();
@@ -57,7 +52,6 @@ function Shoes() {
       }
     );
     if (item.ok) {
-      // alert("Post Add successfully!");
       setAdded(true);
       setName("");
       setPrice("");
@@ -79,7 +73,7 @@ function Shoes() {
         </Button>
 
         <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-          <h3>Add Shoe</h3>
+          <h3 className="font-link">Add Shoe</h3>
           <input
             type="text"
             placeholder="Name..."
@@ -102,23 +96,15 @@ function Shoes() {
             value={picture}
             onChange={(e) => setPicture(e.target.value)}
           ></input>
-          {/* <input
-            type="file"
-            placeholder="Picture..."
-            style={{ margin: "20px" }}
-            value={undefined}
-            onChange={handleFileInputChange}
-          ></input> */}
-
           <Button variant="success" onClick={addHandler}>
             Add
           </Button>
         </Popup>
         <div className="shoes-div">
           {shoes.map((shoe) => (
-            <Link className="shoe-div-link" to={`/Shoe/${shoe.id}`}>
-              <div className="shoe-div" key={shoe.id}>
-                <img className="shoe-img" src={shoe.picture}></img>
+            <Link className="shoe-div-link-shoes" to={`/Shoe/${shoe.id}`}>
+              <div className="shoe-div-shoes" key={shoe.id}>
+                <img className="shoe-img-shoes" src={shoe.picture}></img>
                 <h3>{shoe.name} </h3>
                 <p>{shoe.price} $</p>
               </div>

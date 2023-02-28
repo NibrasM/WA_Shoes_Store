@@ -1,10 +1,12 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
-function Home() {
+import "./Offers.css";
+export default function Offers() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [shoes, setShoes] = useState([]);
+  const [updateShoePrice, setUpdateShoePrice] = useState([]);
 
   function getItems() {
     fetch("https://63f74cb5e40e087c958b9059.mockapi.io/shoes")
@@ -20,29 +22,40 @@ function Home() {
         }
       );
   }
+  function updateShoePriceFun() {
+    setUpdateShoePrice(
+      shoes.map((shoe) => {
+        return shoe.price - shoe.price * 0.15;
+      })
+    );
+  }
 
   useEffect(() => {
     getItems();
+    updateShoePriceFun();
   }, []);
+
+  useEffect(() => {
+    updateShoePriceFun();
+  });
 
   return (
     <div className="home-page">
       <img
-        className="home-page-img"
-        src="https://cdn.shopify.com/s/files/1/0519/7896/1049/files/e907ceb95306db90e4c8c13ba1d693ef_1350x473.gif?v=1675585770"
+        className="offers-page-img"
+        src="https://mmedia.moneyback.com.hk//moneyBack/image/offer/629047f5-51bc-41ea-b704-9dee7da027fb.jpg"
         alt="shoes"
       />
       <div className="shoes-div">
-        {shoes.slice(0, 5).map((shoe) => (
+        {shoes.slice(0, 5).map((shoe, index) => (
           <Link className="shoe-div-link" to={`/Shoe/${shoe.id}`}>
-            <div className="shoe-div-home" key={shoe.id}>
-              <img
-                className="shoe-img-home"
-                src={shoe.picture}
-                alt={shoe.name}
-              ></img>
+            <div className="shoe-div-offers" key={shoe.id}>
+              <img src={shoe.picture} alt={shoe.name}></img>
               <h3>{shoe.name} </h3>
-              <p>{shoe.price} $</p>
+              <p style={{ textDecoration: "line-through", color: "red" }}>
+                {shoe.price} $
+              </p>
+              <p>{updateShoePrice[index]} $</p>
             </div>
           </Link>
         ))}
@@ -50,4 +63,3 @@ function Home() {
     </div>
   );
 }
-export default Home;

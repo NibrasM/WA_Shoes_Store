@@ -1,0 +1,12 @@
+.offers-page-img {
+  width: 100%;
+}
+.shoe-div-offers {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  width: 20vw;
+  height: 45vh;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+}

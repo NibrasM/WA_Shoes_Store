@@ -8,10 +8,10 @@ import "./Shoe.css";
 function Shoe() {
   const [shoe, setShoe] = useState({});
   const params = useParams();
-  const [name, setName] = useState(params.name);
-  const [price, setPrice] = useState(params.price);
+  const [name, setName] = useState(shoe.name);
+  const [price, setPrice] = useState(shoe.price);
   const [id, setId] = useState("");
-  const [picture, setPicture] = useState(params.picture);
+  const [picture, setPicture] = useState(shoe.picture);
 
   useEffect(() => {
     const itemData = async () => {
@@ -24,13 +24,8 @@ function Shoe() {
     itemData();
   }, [params]);
 
-  console.log(params.id);
-  console.log(params);
-
   const editHandler = async (e) => {
     e.preventDefault();
-    console.log(name);
-    console.log(id);
 
     const item = await fetch(
       `https://63f74cb5e40e087c958b9059.mockapi.io/shoes/${shoe.id}`,
