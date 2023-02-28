@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
@@ -12,6 +12,7 @@ function Shoe() {
   const [price, setPrice] = useState(shoe.price);
   const [id, setId] = useState("");
   const [picture, setPicture] = useState(shoe.picture);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const itemData = async () => {
@@ -38,9 +39,7 @@ function Shoe() {
       }
     );
     if (item.ok) {
-      // alert("Post updated successfully!");
-      // let history = useHistory();
-      // history.push("/shoes");
+      navigate("/shoes");
     } else {
       alert("Failed to update post.");
     }
@@ -59,7 +58,7 @@ function Shoe() {
       }
     );
     if (item.ok) {
-      // alert("Post DELETED successfully!");
+      navigate("/shoes");
     } else {
       alert("Failed to DELETED post.");
     }
@@ -77,6 +76,7 @@ function Shoe() {
       </div>
       <div className="inputs-div">
         <input
+          className="input-text"
           type="text"
           placeholder="Name..."
           style={{ margin: "20px" }}
@@ -84,6 +84,7 @@ function Shoe() {
           onChange={(e) => setName(e.target.value)}
         ></input>
         <input
+          className="input-text"
           type="text"
           placeholder="Picture..."
           style={{ margin: "20px" }}
@@ -91,6 +92,7 @@ function Shoe() {
           onChange={(e) => setPicture(e.target.value)}
         ></input>
         <input
+          className="input-text"
           type="text"
           placeholder="Price..."
           style={{ margin: "20px" }}

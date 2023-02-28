@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Popup from "./Popup";
 import { Button } from "react-bootstrap";
 import "./Shoes.css";
+import { useNavigate } from "react-router-dom";
 
 function Shoes() {
   const [error, setError] = useState(null);
@@ -13,6 +14,7 @@ function Shoes() {
   const [price, setPrice] = useState("");
   const [added, setAdded] = useState(false);
   const [picture, setPicture] = useState("");
+  const navigate = useNavigate();
 
   const getItems = () => {
     fetch("https://63f74cb5e40e087c958b9059.mockapi.io/shoes")
@@ -56,6 +58,7 @@ function Shoes() {
       setName("");
       setPrice("");
       setPicture("");
+      navigate("/shoes");
     } else {
       alert("Failed to Add post.");
     }
@@ -68,35 +71,50 @@ function Shoes() {
   } else {
     return (
       <div className="shoes-page-content">
-        <Button variant="success" onClick={() => setButtonPopup(true)}>
-          + Add Shoe
+        <Button
+          className="add-btn"
+          variant="success"
+          onClick={() => setButtonPopup(true)}
+        >
+          Add Shoe
         </Button>
 
         <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
           <h3 className="font-link">Add Shoe</h3>
-          <input
-            type="text"
-            placeholder="Name..."
-            style={{ margin: "20px" }}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-          <input
-            type="text"
-            placeholder="Price..."
-            style={{ margin: "20px" }}
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          ></input>
-
-          <input
-            type="text"
-            placeholder="Picture URL..."
-            style={{ margin: "20px" }}
-            value={picture}
-            onChange={(e) => setPicture(e.target.value)}
-          ></input>
-          <Button variant="success" onClick={addHandler}>
+          <div className="input-div">
+            <label>Name:</label>
+            <input
+              className="input-text"
+              type="text"
+              placeholder="Name..."
+              style={{ margin: "20px" }}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            ></input>
+          </div>
+          <div className="input-div">
+            <label>Price: </label>
+            <input
+              className="input-text"
+              type="text"
+              placeholder="Price..."
+              style={{ margin: "20px" }}
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            ></input>
+          </div>
+          <div className="input-div">
+            <label>Picture: </label>
+            <input
+              className="input-text"
+              type="text"
+              placeholder="Picture URL..."
+              style={{ margin: "20px" }}
+              value={picture}
+              onChange={(e) => setPicture(e.target.value)}
+            ></input>
+          </div>
+          <Button className="popup-btn" variant="success" onClick={addHandler}>
             Add
           </Button>
         </Popup>

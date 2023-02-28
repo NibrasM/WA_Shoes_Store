@@ -19,7 +19,12 @@
   padding: 32px;
   width: 100%;
   max-width: 640px;
-  background-color: rgb(195, 235, 182);
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 
 .popup-inner .close-btn {

@@ -32,7 +32,6 @@ export default function Offers() {
 
   useEffect(() => {
     getItems();
-    updateShoePriceFun();
   }, []);
 
   useEffect(() => {
@@ -47,11 +46,11 @@ export default function Offers() {
         alt="shoes"
       />
       <div className="shoes-div">
-        {shoes.slice(0, 5).map((shoe, index) => (
+        {shoes.slice(5, 10).map((shoe, index) => (
           <Link className="shoe-div-link" to={`/Shoe/${shoe.id}`}>
             <div className="shoe-div-offers" key={shoe.id}>
               <img
-                className="shoe-img-home"
+                className="shoe-img-offers"
                 src={shoe.picture}
                 alt={shoe.name}
               ></img>
@@ -59,7 +58,7 @@ export default function Offers() {
               <p style={{ textDecoration: "line-through", color: "red" }}>
                 {shoe.price} $
               </p>
-              <p>{updateShoePrice[index]} $</p>
+              <p>{updateShoePrice[index + 5]} $</p>
             </div>
           </Link>
         ))}

@@ -3,11 +3,9 @@
 }
 
 .home-page {
-  top: 14.5vh;
   padding-top: 14.5vh;
 }
-.home-page-img {
-}
+
 .shoes-div {
   display: flex;
   flex-wrap: wrap;
@@ -31,4 +29,14 @@
 .shoe-img-home {
   width: 15vw;
   height: 20vh;
+}
+
+@media (max-width: 500px) {
+  .shoe-div-home {
+    width: 40vw;
+  }
+  .shoe-img-home {
+    width: 20vw;
+    height: 30vh;
+  }
 }

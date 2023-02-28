@@ -53,3 +53,19 @@
   transform: scaleX(1);
   transform-origin: right;
 }
+
+@media (max-width: 500px) {
+  .navbar {
+    flex-wrap: nowrap !important;
+    height: 10vh;
+  }
+
+  .nav-link {
+    font-size: 15px;
+  }
+
+  .logo-img {
+    width: 10vw;
+    height: 12vh;
+  }
+}

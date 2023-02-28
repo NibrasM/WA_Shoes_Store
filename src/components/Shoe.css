@@ -27,10 +27,44 @@
 .inputs-div {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .btns-div {
   display: flex;
   width: 20vw;
   align-items: center;
   justify-content: space-between;
+}
+
+.input-text {
+  border-radius: 5px;
+  padding: 1vh;
+  border: 2px solid grey;
+  width: 35vw;
+  font-size: 15px;
+}
+
+@media (max-width: 500px) {
+  .shoe-page {
+    margin-left: 10vw;
+    padding-top: 10vh;
+  }
+
+  .shoe-div {
+    width: 40vw;
+  }
+
+  .shoe-img {
+    width: 30vw;
+    height: 30vh;
+  }
+
+  .btns-div {
+    display: flex;
+    width: 40vw;
+  }
+
+  .shoe-btn {
+    font-size: 15px;
+  }
 }
