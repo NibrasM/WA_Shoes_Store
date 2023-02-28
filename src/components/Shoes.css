@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  padding-top: 5vh;
+  padding-top: 24vh;
 }
 
 .shoes-div {
@@ -36,6 +36,6 @@
 }
 
 .shoe-img-shoes {
-  width: 20vw;
+  width: 15vw;
   height: 22vh;
 }

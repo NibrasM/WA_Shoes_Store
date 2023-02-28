@@ -71,46 +71,41 @@ function Shoe() {
   return (
     <div className="shoe-page">
       <div className="shoe-div">
-        <img
-          className="shoe-img"
-          src={shoe.picture}
-          alt="pic"
-          width="100px"
-          height="100px"
-        />
+        <img className="shoe-img" src={shoe.picture} alt="pic" />
         <h1>{shoe.name}</h1>
         <p>{shoe.price}$</p>
       </div>
+      <div className="inputs-div">
+        <input
+          type="text"
+          placeholder="Name..."
+          style={{ margin: "20px" }}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        ></input>
+        <input
+          type="text"
+          placeholder="Picture..."
+          style={{ margin: "20px" }}
+          value={picture}
+          onChange={(e) => setPicture(e.target.value)}
+        ></input>
+        <input
+          type="text"
+          placeholder="Price..."
+          style={{ margin: "20px" }}
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        ></input>
 
-      <input
-        type="text"
-        placeholder="Name..."
-        style={{ margin: "20px" }}
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      ></input>
-      <input
-        type="text"
-        placeholder="Picture..."
-        style={{ margin: "20px" }}
-        value={picture}
-        onChange={(e) => setPicture(e.target.value)}
-      ></input>
-      <input
-        type="text"
-        placeholder="Price..."
-        style={{ margin: "20px" }}
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      ></input>
-
-      <div className="btns-div">
-        <Button variant="warning" onClick={editHandler}>
-          Edit
-        </Button>
-        <Button variant="danger" onClick={deleteHandler}>
-          Delete
-        </Button>
+        <div className="btns-div">
+          <Button variant="warning" onClick={editHandler}>
+            Edit
+          </Button>
+          <Button variant="danger" onClick={deleteHandler}>
+            Delete
+          </Button>
+        </div>
       </div>
     </div>
   );

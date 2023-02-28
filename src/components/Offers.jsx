@@ -50,7 +50,11 @@ export default function Offers() {
         {shoes.slice(0, 5).map((shoe, index) => (
           <Link className="shoe-div-link" to={`/Shoe/${shoe.id}`}>
             <div className="shoe-div-offers" key={shoe.id}>
-              <img src={shoe.picture} alt={shoe.name}></img>
+              <img
+                className="shoe-img-home"
+                src={shoe.picture}
+                alt={shoe.name}
+              ></img>
               <h3>{shoe.name} </h3>
               <p style={{ textDecoration: "line-through", color: "red" }}>
                 {shoe.price} $
